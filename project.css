@@ -1,0 +1,39 @@
+#container {
+    background-color: black;
+    border: 10px;
+    border-style: solid;
+    text-align: center;
+}
+
+.myButton {
+    background-color: hsl(240, 100%, 50%);
+    color: black;
+    width: 2cm;
+    height: 1cm;
+    text-align: center;
+    font-family: Verdana;
+    text-shadow: 2px;
+    margin-top: 0.2cm;
+    margin-bottom: 0.2cm;
+    margin-left: 0.1cm;
+    margin-right: 0.1cm;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.myButton:hover {
+    background-color: rgb(57, 57, 136);
+}
+
+body {
+    background-color: black;
+} 
+
+h3 {
+    font-variant: small-caps;
+    text-align: center;
+    font-family: Average;
+    color: #59759e;
+    font-size: 1.5cm;
+}
