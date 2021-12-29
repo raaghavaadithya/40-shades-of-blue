@@ -58,14 +58,14 @@ for(let i = 0; i < 20; i++) {
             btn.textContent = secondHalf[secondHalfIterator++];
             document.getElementById(""+i+1).style.backgroundColor = colors[btn.textContent - 1];
         }
-        else if(num > 20 && secondHalfButtonClickOrder[num-21] == 1) {
+        else if(num > 20 && secondHalfButtonClickOrder[num-21] == 1 && firstHalfButtonClickOrder[20] == 1) {
             if(num != 40) {
                 let correctSound = new Audio('ding.mp3');
                 correctSound.play();
             }
             secondHalfButtonClickOrder[num-20] = 1;
             btn.style.visibility = 'hidden';    
-            if(btn.textContent == 40 && secondHalfButtonClickOrder[18] == 1) {
+            if(btn.textContent == 40 && secondHalfButtonClickOrder[19] == 1) {
                 OnGameOver();
             }        
         }
