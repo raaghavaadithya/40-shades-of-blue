@@ -5,8 +5,10 @@ for(let i=0; i<20; i++) {
     document.getElementById("container").innerHTML += s;
 }
 
+let gameOver = false;
+
 //declaring firstHalf (1-20) and second half(21-40)
-var firstHalf = [], secondHalf = [], firstHalfButtonClickOrder = [], secondHalfButtonClickOrder = [], colors = [];
+let firstHalf = [], secondHalf = [], firstHalfButtonClickOrder = [], secondHalfButtonClickOrder = [], colors = [];
 let secondHalfIterator = 0;
 for(var i=1; i<=20; i++) {
     firstHalf.push(i);
@@ -19,6 +21,7 @@ firstHalfButtonClickOrder[0] = 1;
 secondHalfButtonClickOrder.push(0);
 secondHalfButtonClickOrder[0] = 1;
 
+//creating a colors array to set the colors of buttons based on the number they're showing
 for(let k = 0; k < 40; k++) {
     colors[k] = "rgb(" + (255 - (4*k)) + ", " + (255 - (4*k)) + ", 255)";
 }
@@ -36,11 +39,12 @@ function randomizeArray(arr) {
 
 randomizeArray();
 
+//setting the first 20 numbers
 for(let i=0; i < 20; i++) {
     let btn = document.getElementById("" + i+1);
     btn.textContent = "" + firstHalf[i];
     btn.style.backgroundColor = colors[firstHalf[i] - 1];
-} //setting the first 20 numbers
+} 
 
 //creating event listeners for the buttons
 for(let i = 0; i < 20; i++) {
@@ -48,13 +52,34 @@ for(let i = 0; i < 20; i++) {
     btn.addEventListener("click", function(event) {
         let num = btn.textContent;
         if(num <= 20 && firstHalfButtonClickOrder[num-1] == 1) {
+            let correctSound = new Audio('ding.mp3');
+            correctSound.play();
             firstHalfButtonClickOrder[num] = 1;
             btn.textContent = secondHalf[secondHalfIterator++];
             document.getElementById(""+i+1).style.backgroundColor = colors[btn.textContent - 1];
         }
         else if(num > 20 && secondHalfButtonClickOrder[num-21] == 1) {
+            if(num != 40) {
+                let correctSound = new Audio('ding.mp3');
+                correctSound.play();
+            }
             secondHalfButtonClickOrder[num-20] = 1;
-            btn.style.visibility = 'hidden';
+            btn.style.visibility = 'hidden';    
+            if(btn.textContent == 40 && secondHalfButtonClickOrder[18] == 1) {
+                OnGameOver();
+            }        
+        }
+
+        else { //wrong button pressed
+            let wrongSound = new Audio('error.mp3');
+            wrongSound.play();
         }
     })
+}
+
+
+function OnGameOver() {
+    gameOver = true;
+    let gameOverAudio = new Audio('Tada-sound.mp3');
+    gameOverAudio.play();
 }
