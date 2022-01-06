@@ -33,3 +33,11 @@ h3 {
     color: #59759e;
     font-size: 1.5cm;
 }
+
+#timer {
+    padding-top: 40px;
+    text-align: center;
+    color: white;
+    font-size: 45px;
+    font-family: Verdana;
+}

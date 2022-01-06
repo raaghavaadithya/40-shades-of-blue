@@ -10,6 +10,7 @@ let gameOver = false;
 //declaring firstHalf (1-20) and second half(21-40)
 let firstHalf = [], secondHalf = [], firstHalfButtonClickOrder = [], secondHalfButtonClickOrder = [], colors = [];
 let secondHalfIterator = 0;
+let startTime, s = 0, m = 0, timeElapsedInMilli, timeSinceStart;
 for(var i=1; i<=20; i++) {
     firstHalf.push(i);
     secondHalf.push(i+20);
@@ -26,7 +27,7 @@ for(let k = 0; k < 40; k++) {
     colors[k] = "rgb(" + (255 - (4*k)) + ", " + (255 - (4*k)) + ", 255)";
 }
 
-//Array randomizing function
+//Array randomizing function (randomizing both firstHalf and secondHalf arrays)
 function randomizeArray(arr) {
     let p = 100;
     while(p--) {
@@ -40,7 +41,7 @@ function randomizeArray(arr) {
 randomizeArray();
 
 //setting the first 20 numbers
-for(let i=0; i < 20; i++) {
+for(let i = 0; i < 20; i++) {
     let btn = document.getElementById("" + i+1);
     btn.textContent = "" + firstHalf[i];
     btn.style.backgroundColor = colors[firstHalf[i] - 1];
@@ -51,6 +52,12 @@ for(let i = 0; i < 20; i++) {
     let btn = document.getElementById(""+i+1);
     btn.addEventListener("click", function(event) {
         let num = btn.textContent;
+
+        if(num == 1) {
+            startTime = new Date();
+            timeElapsed();
+        } 
+
         if(num <= 20 && firstHalfButtonClickOrder[num-1] == 1) {
             let correctSound = new Audio('ding.mp3');
             correctSound.play();
@@ -77,6 +84,9 @@ for(let i = 0; i < 20; i++) {
     })
 }
 
+function timeElapsed() {
+    
+}
 
 function OnGameOver() {
     gameOver = true;
