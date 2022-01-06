@@ -1,6 +1,9 @@
 # 40 Shades of Blue
 This is just a practice project, don't judge.
-You press the buttons in the increasing order of the number
+
+You press the buttons in the increasing order of the number.
+
+Wanna see: https://raaghavaadithya.github.io/40-shades-of-blue/
 
 ## Basic
 
